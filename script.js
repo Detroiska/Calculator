@@ -34,7 +34,7 @@ function updateUpperField() {
 function inputNum(e) {
 	const num = e.currentTarget['value'];
 	if (operator === undefined) firstNum = firstNum === '0' ? num : firstNum + num;
-	else secondNum = secondNum + num;
+	else secondNum = secondNum = secondNum === '0' ? num : secondNum + num;
 	updateLowerField();
 }
 
@@ -79,7 +79,9 @@ function percent() {
 }
 
 function decimal() {
-	return;
+	if (secondNum !== '' && !secondNum.includes('.')) secondNum += '.';
+	else if (secondNum === '' && firstNum !== '' && !firstNum.includes('.')) firstNum += '.';
+	updateLowerField();
 }
 
 document.querySelectorAll('.number').forEach(num => num.addEventListener('click', inputNum));
@@ -88,4 +90,4 @@ document.querySelector('button[value=equals]').addEventListener('click', equals)
 document.querySelector('button[value=clear]').addEventListener('click', clear);
 document.querySelector('button[value=delete]').addEventListener('click', deleteInput);
 document.querySelector('button[value=percent]').addEventListener('click', percent);
-document.querySelector('button[value=decimal').addEventListener('click', decimal);
+document.querySelector('button[value=decimal]').addEventListener('click', decimal);
