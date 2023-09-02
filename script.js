@@ -16,7 +16,7 @@ function operate(operator, num1, num2) {
 	else if (operator === '*') return `${a * b}`;
 	else if (operator === '/') {
 		if (b === 0) return 'CANNOT DIVIDE BY ZERO';
-		else retrn `${a / b}`;
+		else return `${a / b}`;
 	}
 	else return;
 }
